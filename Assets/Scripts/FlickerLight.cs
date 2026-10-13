@@ -10,19 +10,24 @@ public class FlickerLight : MonoBehaviour
     public float maxIntensity = 1.2f;
     public float flickerSpeed = 5f;
     public float decreaseFactor = 0.4f;
-        
+    public bool burningOut = false;
+    
     [Header("Sprite Settings")]
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites; 
     public float timeBetweenChanges = 5f;
+    
     
     private float randomizer;
     private bool isBurning = true;
 
     void Start()
     {
-        randomizer = Random.Range(0f, 100f); 
-        StartCoroutine(BurnOutRoutine());
+        randomizer = Random.Range(0f, 100f);
+        if (burningOut)
+        {
+            StartCoroutine(BurnOutRoutine());
+        }
     }
 
     void Update()

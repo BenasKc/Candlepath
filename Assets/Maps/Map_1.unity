@@ -642,7 +642,8 @@ MonoBehaviour:
   maxIntensity: 1.2
   flickerSpeed: 5
   decreaseFactor: 0
-  spriteRenderer: {fileID: 0}
+  burningOut: 0
+  spriteRenderer: {fileID: 1083455463}
   sprites: []
   timeBetweenChanges: 5
 --- !u!114 &1083455462

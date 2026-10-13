@@ -166,6 +166,7 @@ MonoBehaviour:
   maxIntensity: 1.2
   flickerSpeed: 5
   decreaseFactor: 0.4
+  burningOut: 1
   spriteRenderer: {fileID: 7061184115442036324}
   sprites:
   - {fileID: 328676731245684168, guid: 4f2e63eb7369a824fb2c040305ac6167, type: 3}
