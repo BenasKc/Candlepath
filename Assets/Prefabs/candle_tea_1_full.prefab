@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7061184115442036324}
   - component: {fileID: 3384666343278802037}
   - component: {fileID: 5862388989163870584}
+  - component: {fileID: 8878855590203606422}
   m_Layer: 0
   m_Name: candle_tea_1_full
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 328676731245684168, guid: 4f2e63eb7369a824fb2c040305ac6167, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b2271167a6a28542bbabf117cb5b747, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -169,8 +170,57 @@ MonoBehaviour:
   burningOut: 1
   spriteRenderer: {fileID: 7061184115442036324}
   sprites:
-  - {fileID: 328676731245684168, guid: 4f2e63eb7369a824fb2c040305ac6167, type: 3}
-  - {fileID: 2476321263445873847, guid: e234c6100217c9642883808cbce929ce, type: 3}
-  - {fileID: 369816735730507215, guid: b995b8611785f3446911628432cd0234, type: 3}
+  - {fileID: 21300000, guid: 7b2271167a6a28542bbabf117cb5b747, type: 3}
+  - {fileID: 21300000, guid: dd7c9fd211d9a1d2e8aadd7393f87d04, type: 3}
+  - {fileID: 21300000, guid: 448118419ef3e6e67bb598cedf911cb5, type: 3}
   - {fileID: 4383745053949623252, guid: 328b5347c914ecc42aa5cc8d1197372e, type: 3}
   timeBetweenChanges: 5
+  frameAnimator: {fileID: 8878855590203606422}
+--- !u!114 &8878855590203606422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098719459465356066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8235e9a332b95ffc5aab1d2ca73d85ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteFrameAnimator
+  target: {fileID: 7061184115442036324}
+  stages:
+  - frames:
+    - {fileID: 21300000, guid: 7b2271167a6a28542bbabf117cb5b747, type: 3}
+    - {fileID: 21300000, guid: 56dc1aca8c1f64cf9817e203821b52e9, type: 3}
+    - {fileID: 21300000, guid: c6d8d4c3c93fe47f5867fa4b98d30b70, type: 3}
+    - {fileID: 21300000, guid: ef6f6c7598d3497d0a06248141a489e9, type: 3}
+    - {fileID: 21300000, guid: f3e298ef21c3788828809c3850a3d5fd, type: 3}
+    - {fileID: 21300000, guid: 70f02186bb9c4c9d99742821e5ad9342, type: 3}
+    - {fileID: 21300000, guid: 9e38bacd6d00dd32bb137632324f669c, type: 3}
+    - {fileID: 21300000, guid: d2292594160f2428bb7e6b8922fdf866, type: 3}
+    fps: 10
+  - frames:
+    - {fileID: 21300000, guid: dd7c9fd211d9a1d2e8aadd7393f87d04, type: 3}
+    - {fileID: 21300000, guid: 1df63f3abac98fa50a4cba08bcd39fc7, type: 3}
+    - {fileID: 21300000, guid: 2685c4444898fcad9b8df94048aad31b, type: 3}
+    - {fileID: 21300000, guid: 98b7497965341b1398f011bc5a5f4279, type: 3}
+    - {fileID: 21300000, guid: bfc9853a530d84812bbf46b56a4ad5be, type: 3}
+    - {fileID: 21300000, guid: 272458c8fa2e212d4ba27deacd3d9a8a, type: 3}
+    - {fileID: 21300000, guid: 962899e0f8e1bdb4a8b1a4c5c241b9ab, type: 3}
+    - {fileID: 21300000, guid: cd343d87f250f6be383c3f7e5e19ba58, type: 3}
+    fps: 10
+  - frames:
+    - {fileID: 21300000, guid: 448118419ef3e6e67bb598cedf911cb5, type: 3}
+    - {fileID: 21300000, guid: 9f96e9744978018528b32eef21bdfbda, type: 3}
+    - {fileID: 21300000, guid: dfebad91576ba25c9b9b9fa2f309dc97, type: 3}
+    - {fileID: 21300000, guid: da4ec25b36575252f8032f2c68c0ba7d, type: 3}
+    - {fileID: 21300000, guid: 253907502f070fb0b8f45d85be7b597d, type: 3}
+    - {fileID: 21300000, guid: 8444ef65589d10ed99a7c5c269abc065, type: 3}
+    - {fileID: 21300000, guid: b186472f12a496227807a2deeffb1ced, type: 3}
+    - {fileID: 21300000, guid: d8024af8a1b44f7eba3b6e956e9cb0a8, type: 3}
+    fps: 10
+  - frames:
+    - {fileID: 4383745053949623252, guid: 328b5347c914ecc42aa5cc8d1197372e, type: 3}
+    fps: 10
+  randomizeStart: 1
