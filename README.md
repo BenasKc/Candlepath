@@ -27,9 +27,39 @@ camera angle as the game camera (design document, section 6.1).
 |---|---|
 | `candle_tea_1_full`, `_2_mid`, `_3_low` | Tea candle (Arbatinė žvakelė), three wax-height stages |
 | `lantern_1_full`, `_2_mid`, `_3_low` | Lantern (Žibintas), three wax-height stages |
+| `candle_long_1_full`, `_2_mid`, `_3_low` | Long candle (Ilgoji žvakė), tall thin candle, three wax-height stages |
+| `candelabra_1_full`, `_2_mid`, `_3_low` | Candelabra (Žvakidė), three candles, three wax-height stages |
+| `candle_spark_1_full`, `_2_mid`, `_3_low` | Spark candle (Žiežirbinė žvakė), ember-red candle with sparks, three wax-height stages |
 | `eternal_lamp` | Eternal Lamp (Amžinoji lempa), the end of the path |
 | `wax_puddle` | Wax puddle (Vaško likutis), left behind when a candle burns out |
 | `enemy_shadow` | Shadow (Šešėlis) enemy base body with eyes |
+| `enemy_moth` | Moth (Kandis) |
+| `enemy_wind_spirit` | Wind spirit (Vėjo dvasia) |
+| `enemy_wax_gnawer` | Wax gnawer (Vaško graužikas) |
+| `enemy_golem` | Darkness golem (Tamsos golemas) |
+| `enemy_boss` | Darkness shadow boss (Tamsos šešėlis) |
+
+### Animations
+
+`generate_sprites.py` can also render looping frame sequences (`-- Assets/Sprites [name-prefix ...] --anim`).
+Every sprite except the wax puddle gets 8 frames in `Assets/Sprites/Anim/<sprite>/<sprite>_00..07.png`
+(256x256, same camera and scale as the stills):
+
+| Sprites | Motion |
+|---|---|
+| All candles, lanterns, Eternal Lamp | Flame flicker and sway |
+| `candle_spark_*` | Sparks rise, drift and fade |
+| `enemy_shadow` | Breathing pulse, blink on the last frame |
+| `enemy_moth` | Wing flap and hover bob |
+| `enemy_wind_spirit` | Hover bob, wave running along the tail |
+| `enemy_wax_gnawer` | Waddle and tail wag |
+| `enemy_golem` | Stomp, arm swing, pulsing cracks |
+| `enemy_boss` | Looming pulse, hover, swaying hem, blink |
+
+Loop: 8 frames at 10 fps. In Unity, run **Candlepath > Wire Sprite Animations** (`Assets/Editor/WireSpriteAnimations.cs`):
+it imports the frames as sprites and adds a `SpriteFrameAnimator` to the tower and enemy prefabs, creating the
+missing prefabs (`Assets/Prefabs/Towers/`, `Assets/Prefabs/Enemies/`) from the tea candle / `Enemy_Shadow` prefabs.
+Towers switch animation per burn stage through `FlickerLight.frameAnimator`. Safe to run again.
 
 Properties:
 
@@ -82,3 +112,13 @@ To change the path, edit `PATH_CORNERS` in the script.
 
 Remaining alpha (E3) sprites: candelabra (Žvakidė), sparkler candle (Žiežirbinė žvakė), long candle
 (Ilgoji žvakė), other enemies (Moth, Wind Spirit, Wax Grub, Darkness Golem, boss), props, and the Library (Biblioteka) and Chapel (Koplyčia) maps.
+
+## Sandbox (editor only)
+
+1. Run **Candlepath > Wire Sprite Animations** once (creates the tower and enemy prefabs).
+2. Switch on **Candlepath > Sandbox Mode**, then press Play in a map scene (or start a map from the main menu).
+
+`SandboxController` replaces `TowerBuilder` and `WaveSpawner` while active. Keys `1`-`5` select a tower, left click places it
+(green/red ghost shows if the cell is free), right click removes it. `Q W E R T Y` spawn the six enemy types (count and
+game speed are in the right-hand panel), `K` kills all enemies. Towers only burn down for now (no attack code yet), and
+`WaveSpawner` logs a harmless "no map selected" error when started without a menu selection.

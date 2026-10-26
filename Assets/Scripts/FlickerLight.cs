@@ -16,7 +16,8 @@ public class FlickerLight : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite[] sprites; 
     public float timeBetweenChanges = 5f;
-    
+    public SpriteFrameAnimator frameAnimator; // if set, burn-out stages switch its looping animation instead of a single sprite
+
     
     private float randomizer;
     private bool isBurning = true;
@@ -44,7 +45,8 @@ public class FlickerLight : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenChanges);
             
-            spriteRenderer.sprite = sprites[i];
+            if (frameAnimator != null) frameAnimator.SetStage(i);
+            else spriteRenderer.sprite = sprites[i];
 
             maxIntensity -= decreaseFactor;
             minIntensity -= decreaseFactor;
