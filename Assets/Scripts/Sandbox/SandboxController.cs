@@ -197,7 +197,7 @@ public class SandboxController : MonoBehaviour
 
     static void KillAll()
     {
-        foreach (var enemy in FindObjectsByType<Enemy>(FindObjectsSortMode.None)) enemy.Kil();
+        foreach (var enemy in FindObjectsByType<Enemy>(FindObjectsSortMode.None)) enemy.Kill();
     }
 
     void OnGUI()
