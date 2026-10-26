@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8149202944081666084}
   - component: {fileID: 7662697449568208295}
   - component: {fileID: 8177950103093855654}
+  - component: {fileID: 7502279179506247792}
   m_Layer: 0
   m_Name: Enemy_Shadow
   m_TagString: Untagged
@@ -118,5 +119,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6a9e78693c4447ab11dc3f1c320b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  lampDamage: 1
+  lampDamage: 20
   waxReward: 5
+--- !u!114 &7502279179506247792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327182862077272658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc6f905623210f46ac161a92db9aed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 10
+  spriteRenderer: {fileID: 0}
+  litColor: {r: 1, g: 0.6, b: 0.25, a: 1}
+  minAlpha: 0.3

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7061184115442036324}
   - component: {fileID: 3384666343278802037}
   - component: {fileID: 5862388989163870584}
+  - component: {fileID: 3913486520948700417}
   m_Layer: 0
   m_Name: candle_tea_1_full
   m_TagString: Untagged
@@ -174,3 +175,20 @@ MonoBehaviour:
   - {fileID: 369816735730507215, guid: b995b8611785f3446911628432cd0234, type: 3}
   - {fileID: 4383745053949623252, guid: 328b5347c914ecc42aa5cc8d1197372e, type: 3}
   timeBetweenChanges: 5
+--- !u!114 &3913486520948700417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098719459465356066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481ef017677c92a4e9e6e89fc4fdf713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CandleAura
+  candleLight: {fileID: 0}
+  radius: 2
+  damagePerSecond: 3
+  attackColor: {r: 1, g: 0.45, b: 0.15, a: 1}
+  colorLerpSpeed: 6

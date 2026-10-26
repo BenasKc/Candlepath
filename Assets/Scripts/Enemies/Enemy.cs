@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
         Movement.ReachedEnd += ReachLamp;
     }
 
-    public void Kil()
+    public void Kill()
     {
         if (removed) return;
         Killed?.Invoke(this);

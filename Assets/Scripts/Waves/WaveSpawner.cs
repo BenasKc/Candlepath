@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class WaveSpawner : MonoBehaviour
 {
-    [SerializeField] private MapDefinition map;
+    // [SerializeField] private MapDefinition map; UNUSED FOR NOW
     [SerializeField] private MapPath path;
     
 #if UNITY_EDITOR
@@ -18,7 +18,7 @@ public class WaveSpawner : MonoBehaviour
     public int CurrentWave { get; private set; } // 0 = none started yet
     public bool WaveRunning { get; private set; }
     public int TotalWaves => settings.WaveSet.Waves.Count;
-
+    public DifficultySettings Settings => settings;
     public event Action<int> WaveStarted;
     public event Action<int, int> WaveEnded; // wave number, bonus wax
     public event Action AllWavesCleared;
@@ -112,5 +112,4 @@ public class WaveSpawner : MonoBehaviour
         if (CurrentWave >= TotalWaves)
             AllWavesCleared?.Invoke();
     }
-
 }
