@@ -26,6 +26,7 @@ public class PauseMenu : MonoBehaviour
 
     void Update()
     {
+        if (EternalLamp.IsGameOver) return;
         var keyboard = Keyboard.current;
         if (keyboard == null) return;
 

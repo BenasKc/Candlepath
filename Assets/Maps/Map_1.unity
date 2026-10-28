@@ -618,6 +618,7 @@ GameObject:
   - component: {fileID: 1083455463}
   - component: {fileID: 1083455462}
   - component: {fileID: 1083455461}
+  - component: {fileID: 1083455464}
   m_Layer: 0
   m_Name: eternal_lamp 1
   m_TagString: Untagged
@@ -772,6 +773,27 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1083455464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1083455459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 810e23f40bfa15f45bcbf7a8693fe4b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EternalLamp
+  spawner: {fileID: 0}
+  flicker: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  hitColor: {r: 0.6, g: 0.3, b: 1, a: 1}
+  hitFlashTime: 0.25
+  minBrightness: 0.15
+  flameText: {fileID: 6587438483371789455}
+  endPanel: {fileID: 6587438483371789454}
+  endTitle: {fileID: 6587438483371789453}
 --- !u!1 &1199367684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +3875,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc46d0e0c02a045c586161064336e8d3, type: 3}
+--- !u!114 &6587438483371789453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7197157542698789451, guid: fc46d0e0c02a045c586161064336e8d3, type: 3}
+  m_PrefabInstance: {fileID: 6587438483371789452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &6587438483371789454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8976419141691799572, guid: fc46d0e0c02a045c586161064336e8d3, type: 3}
+  m_PrefabInstance: {fileID: 6587438483371789452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6587438483371789455 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2763411670586646358, guid: fc46d0e0c02a045c586161064336e8d3, type: 3}
+  m_PrefabInstance: {fileID: 6587438483371789452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
