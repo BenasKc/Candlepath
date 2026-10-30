@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public enum Difficulty { Easy, Medium, Hard }
 
-[CreateAssetMenu(menuName = "Candlepath/Map Definition")]
+
 
 [System.Serializable]
 public class DifficultySettings
@@ -15,6 +15,8 @@ public class DifficultySettings
     [field: SerializeField] public float EnemySpeedMultiplier { get; private set; } = 1f;
     [field: SerializeField] public float EnemyHealthMultiplier { get; private set; } = 1f;
 }
+
+[CreateAssetMenu(menuName = "Candlepath/Map Definition")]
 public class MapDefinition : ScriptableObject
 {
     [field: SerializeField] public string DisplayName { get; private set; }
