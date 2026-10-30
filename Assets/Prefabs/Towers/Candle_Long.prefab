@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2882596799832661854}
   - component: {fileID: 7061184115442036324}
+  - component: {fileID: -8957511556287330593}
   - component: {fileID: 3384666343278802037}
   - component: {fileID: 5862388989163870584}
   - component: {fileID: 8878855590203606422}
@@ -94,6 +95,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &-8957511556287330593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098719459465356066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f714c98cbc5ca14892077f484a7837d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CandleSpark
+  candleLight: {fileID: 0}
+  sparkPrefab: {fileID: 3194668702442172593, guid: b5e52ccc070f9cd4383abc0da4113ca1, type: 3}
+  firePoint: {fileID: 0}
+  range: 2.6
+  damagePerHit: 4
+  fireInterval: 1.2
 --- !u!114 &3384666343278802037
 MonoBehaviour:
   m_ObjectHideFlags: 0

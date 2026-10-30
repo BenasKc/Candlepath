@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e55106222b25ab41b33f948945cdaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerBuilder
-  prefabToPlace: {fileID: 3098719459465356066, guid: 8e8a3cc8c85cc3940bde1dac91b6a301, type: 3}
+  prefabToPlace: {fileID: 3098719459465356066, guid: e6efdf3a364be7c81a1dd0c7247fdd06, type: 3}
   gameGrid: {fileID: 1446605257}
   buildGrid: {fileID: 82277255}
 --- !u!4 &82277254
@@ -662,6 +662,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1083455463}
   sprites: []
   timeBetweenChanges: 5
+  frameAnimator: {fileID: 0}
 --- !u!114 &1083455462
 MonoBehaviour:
   m_ObjectHideFlags: 0
