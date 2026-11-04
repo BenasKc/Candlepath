@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3980098399421596605}
   - component: {fileID: 8149202944081666084}
   - component: {fileID: 7662697449568208295}
+  - component: {fileID: -2041073918927042031}
   - component: {fileID: 8177950103093855654}
   - component: {fileID: 6820307046937863973}
   m_Layer: 0
@@ -107,6 +108,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollower
   speed: 2.5
+--- !u!114 &-2041073918927042031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4327182862077272658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bc6f905623210f46ac161a92db9aed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 5
+  spriteRenderer: {fileID: 0}
+  litColor: {r: 1, g: 0.6, b: 0.25, a: 1}
+  minAlpha: 0.3
 --- !u!114 &8177950103093855654
 MonoBehaviour:
   m_ObjectHideFlags: 0
