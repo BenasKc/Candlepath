@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int lampDamage = 1;
     [SerializeField] private int waxReward = 5;
-    
+
     public int LampDamage => lampDamage;
     public int WaxReward => waxReward;
     public PathFollower Movement { get; private set; }
@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public event Action<Enemy> Killed;
     public event Action<Enemy> ReachedLamp;
     public event Action<Enemy> Removed; // fires exactly once, for either reason
+    public static event Action<Enemy> AnyReachedLamp;
 
     private bool removed;
 
@@ -29,12 +30,13 @@ public class Enemy : MonoBehaviour
         Killed?.Invoke(this);
         Remove();
     }
-    
+
 
     void ReachLamp()
     {
         if (removed) return;
         ReachedLamp?.Invoke(this);
+        AnyReachedLamp?.Invoke(this);
         Remove();
     }
 

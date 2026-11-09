@@ -40,15 +40,15 @@ public class EternalLamp : MonoBehaviour
         if (spawner.Settings != null) MaxFlame = spawner.Settings.StartingFlame;
         Flame = MaxFlame;
 
-        spawner.EnemyReachedLamp += OnEnemyReachedLamp;
+        Enemy.AnyReachedLamp += OnEnemyReachedLamp;
         spawner.AllWavesCleared += OnAllWavesCleared;
         Refresh();
     }
 
     void OnDestroy()
     {
+        Enemy.AnyReachedLamp -= OnEnemyReachedLamp;
         if (spawner == null) return;
-        spawner.EnemyReachedLamp -= OnEnemyReachedLamp;
         spawner.AllWavesCleared -= OnAllWavesCleared;
     }
 

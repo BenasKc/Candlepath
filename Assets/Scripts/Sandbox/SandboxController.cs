@@ -135,7 +135,11 @@ public class SandboxController : MonoBehaviour
 
         if (overUi) return;
 
-        if (mouse.leftButton.wasPressedThisFrame && selected >= 0 && canBuild) Place(cell);
+        // A burned-out candle on this cell takes the click first: left = clean, right = relight
+        bool left = mouse.leftButton.wasPressedThisFrame;
+        if ((left || mouse.rightButton.wasPressedThisFrame) && WaxPuddle.TryClick(builder.buildGrid, cell, left)) return;
+
+        if (left && selected >= 0 && canBuild) Place(cell);
 
         if (mouse.rightButton.wasPressedThisFrame)
         {
@@ -206,7 +210,7 @@ public class SandboxController : MonoBehaviour
         GUI.matrix = Matrix4x4.Scale(new Vector3(s, s, 1));
         float width = Screen.width / s;
 
-        leftPanel = new Rect(10, 10, 210, 70 + towers.Count * 28 + 56);
+        leftPanel = new Rect(10, 10, 210, 70 + towers.Count * 28 + 56 + 24);
         GUILayout.BeginArea(leftPanel, GUI.skin.box);
         GUILayout.Label("SANDBOX - Towers (1-5)");
         for (int i = 0; i < towers.Count; i++)
@@ -217,6 +221,7 @@ public class SandboxController : MonoBehaviour
         burnOut = GUILayout.Toggle(burnOut, "Candles burn out");
         if (GUILayout.Button("Clear towers")) ClearTowers();
         GUILayout.Label("Left click: place   Right click: remove");
+        GUILayout.Label("Puddle: left clean, right relight");
         GUILayout.EndArea();
 
         rightPanel = new Rect(width - 220, 10, 210, 70 + enemies.Count * 28 + 80);
