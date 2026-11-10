@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1693661a1e174519a82efa4ac37d86d, type: 3}
+  m_Name: Biblioteka
+  m_EditorClassIdentifier: Assembly-CSharp::MapDefinition
+  <DisplayName>k__BackingField: Biblioteka
+  <SceneName>k__BackingField: Map_2
+  <Preview>k__BackingField: {fileID: 21300000, guid: 4412dbbfc5fed124591e702afeb47a7c, type: 3}
+  <Music>k__BackingField: {fileID: 8300000, guid: b0805fd6401f1fbe3b2409e973315c38, type: 3}
+  difficulties:
+  - <Difficulty>k__BackingField: 0
+    <WaveSet>k__BackingField: {fileID: 11400000, guid: 571a5c2fe0a7420668b605fb2cd69282, type: 2}
+    <StartingWax>k__BackingField: 500
+    <StartingFlame>k__BackingField: 100
+    <EnemySpeedMultiplier>k__BackingField: 1
+    <EnemyHealthMultiplier>k__BackingField: 1
