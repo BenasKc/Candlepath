@@ -22,6 +22,7 @@ public class MapDefinition : ScriptableObject
     [field: SerializeField] public string DisplayName { get; private set; }
     [field: SerializeField] public string SceneName { get; private set; }
     [field: SerializeField] public Sprite Preview { get; private set; }
+    [field: SerializeField] public AudioClip Music { get; private set; }
 
     [SerializeField] private List<DifficultySettings> difficulties = new List<DifficultySettings>();
     

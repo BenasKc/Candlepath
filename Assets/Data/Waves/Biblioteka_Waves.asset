@@ -1,0 +1,595 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4256899a1ff5f43b9939baa781539cdc, type: 3}
+  m_Name: Biblioteka_Waves
+  m_EditorClassIdentifier: Assembly-CSharp::WaveSet
+  waves:
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.88
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 86
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.85999995
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 92
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 7
+      <Interval>k__BackingField: 0.84
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.84
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 98
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 8
+      <Interval>k__BackingField: 0.82
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 0.82
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 104
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 13
+      <Interval>k__BackingField: 0.79999995
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.79999995
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.79999995
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 170
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 10
+      <Interval>k__BackingField: 0.78
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.78
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 0.78
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 116
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 11
+      <Interval>k__BackingField: 0.76
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.76
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.76
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 0.76
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 122
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 12
+      <Interval>k__BackingField: 0.74
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 7
+      <Interval>k__BackingField: 0.74
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.74
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 0.74
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 128
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 13
+      <Interval>k__BackingField: 0.71999997
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 8
+      <Interval>k__BackingField: 0.71999997
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 0.71999997
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 0.71999997
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 134
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 20
+      <Interval>k__BackingField: 0.7
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 13
+      <Interval>k__BackingField: 0.7
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.7
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 0.7
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 2.1
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: eff23b82ff3cd5b37bdbe05a44fd24fa, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 4
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 200
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 15
+      <Interval>k__BackingField: 0.68
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 10
+      <Interval>k__BackingField: 0.68
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 0.68
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.68
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 2.04
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 146
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 16
+      <Interval>k__BackingField: 0.65999997
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 11
+      <Interval>k__BackingField: 0.65999997
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 0.65999997
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 0.65999997
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 1.9799999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 152
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 17
+      <Interval>k__BackingField: 0.64
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 12
+      <Interval>k__BackingField: 0.64
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.64
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 0.64
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 1
+      <Interval>k__BackingField: 1.92
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 158
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 18
+      <Interval>k__BackingField: 0.62
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 13
+      <Interval>k__BackingField: 0.62
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.62
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 0.62
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 1.86
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 164
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 27
+      <Interval>k__BackingField: 0.59999996
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 20
+      <Interval>k__BackingField: 0.59999996
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 9
+      <Interval>k__BackingField: 0.59999996
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.59999996
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 1.8
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 230
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 20
+      <Interval>k__BackingField: 0.58
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 15
+      <Interval>k__BackingField: 0.58
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.58
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 0.58
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 1.74
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 176
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 21
+      <Interval>k__BackingField: 0.56
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 16
+      <Interval>k__BackingField: 0.56
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 7
+      <Interval>k__BackingField: 0.56
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 0.56
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 1.6800001
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 182
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 22
+      <Interval>k__BackingField: 0.53999996
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 17
+      <Interval>k__BackingField: 0.53999996
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 7
+      <Interval>k__BackingField: 0.53999996
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 0.53999996
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 1.6199999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 188
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 23
+      <Interval>k__BackingField: 0.52
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 18
+      <Interval>k__BackingField: 0.52
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 8
+      <Interval>k__BackingField: 0.52
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.52
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 1.56
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 194
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 34
+      <Interval>k__BackingField: 0.5
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 27
+      <Interval>k__BackingField: 0.5
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 12
+      <Interval>k__BackingField: 0.5
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 7
+      <Interval>k__BackingField: 0.5
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 1.5
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: eff23b82ff3cd5b37bdbe05a44fd24fa, type: 3}
+      <Count>k__BackingField: 2
+      <Interval>k__BackingField: 4
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 260
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 25
+      <Interval>k__BackingField: 0.48
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 20
+      <Interval>k__BackingField: 0.48
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 9
+      <Interval>k__BackingField: 0.48
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 5
+      <Interval>k__BackingField: 0.48
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 3
+      <Interval>k__BackingField: 1.4399999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 206
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 26
+      <Interval>k__BackingField: 0.45999998
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 21
+      <Interval>k__BackingField: 0.45999998
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 9
+      <Interval>k__BackingField: 0.45999998
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.45999998
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 1.3799999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 212
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 27
+      <Interval>k__BackingField: 0.44
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 22
+      <Interval>k__BackingField: 0.44
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 10
+      <Interval>k__BackingField: 0.44
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.44
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 1.3199999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 218
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 28
+      <Interval>k__BackingField: 0.42
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 23
+      <Interval>k__BackingField: 0.42
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 10
+      <Interval>k__BackingField: 0.42
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 0.42
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 4
+      <Interval>k__BackingField: 1.26
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 224
+  - groups:
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
+      <Count>k__BackingField: 41
+      <Interval>k__BackingField: 0.39999998
+      <StartDelay>k__BackingField: 0
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 59e5517e2734b2e20af2f8b117f98031, type: 3}
+      <Count>k__BackingField: 34
+      <Interval>k__BackingField: 0.39999998
+      <StartDelay>k__BackingField: 2
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
+      <Count>k__BackingField: 16
+      <Interval>k__BackingField: 0.39999998
+      <StartDelay>k__BackingField: 4
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 0d0687d3a2c52eb25ab516a1ea7e68b5, type: 3}
+      <Count>k__BackingField: 10
+      <Interval>k__BackingField: 0.39999998
+      <StartDelay>k__BackingField: 6
+      <SpawnPoint>k__BackingField: -1
+    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d975163c1e2ea9222a6bee6ad84e3919, type: 3}
+      <Count>k__BackingField: 6
+      <Interval>k__BackingField: 1.1999999
+      <StartDelay>k__BackingField: 8
+      <SpawnPoint>k__BackingField: -1
+    <BonusWax>k__BackingField: 290
