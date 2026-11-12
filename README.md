@@ -130,6 +130,43 @@ Decorations block candle placement through `DecorBlocker` (`Assets/Scripts/Decor
 Remaining alpha (E3) sprites: candelabra (Žvakidė), sparkler candle (Žiežirbinė žvakė), long candle
 (Ilgoji žvakė), other enemies (Moth, Wind Spirit, Wax Grub, Darkness Golem, boss), props, and the Library (Biblioteka) and Chapel (Koplyčia) maps.
 
+## Building candles
+
+`TowerBuilder` creates the right-hand build panel (`Assets/Scripts/UI/CandlePanel.cs`) when a map starts; no scene wiring
+is needed. The panel lists the candles from `Assets/Resources/CandleCatalog.asset` (order, name, prefab, wax cost, and
+the rebuild / salvage share for burnt-out candles), so prices are tuned there. Candles the player cannot afford are dimmed. Burn time comes from each prefab's
+`FlickerLight.timeBetweenChanges` (three stages): Tea 36 s, Spark 45 s, Lantern 60 s, Candelabra 66 s, Long 75 s.
+
+The panel is styled as an iron-bound oak board with parchment slips. Its textures in `Assets/Resources/UI/` are made by
+`Art/UI/generate_ui.py` (Python 3 with numpy and Pillow, run from the project root): the wood is graded from the CC0
+Poly Haven *Old Planks 02* texture, the iron frame, rivets, parchment, brass studs and ornaments are drawn procedurally.
+Fonts are [Cinzel](https://github.com/NDISCOVER/Cinzel) and [IM Fell English](https://iginomarini.com/fell/) (SIL Open Font
+License, texts next to the fonts in `Assets/Resources/UI/Fonts/`).
+
+Wax (`Assets/Scripts/Economy/WaxBank.cs`) starts at the difficulty's `StartingWax` and is earned from each killed enemy
+(`Enemy.waxReward`) and each finished wave (`Wave.BonusWax`).
+
+| Input | Action |
+|---|---|
+| `1`-`5` or click a card | Select a candle (again to deselect) |
+| Left click | Place it. While placing, a warm hand-held light follows the cursor and free cells nearby get faint chalk marks. The preview shows the light reach (soft glow), spark range (long dashes) and aura radius (dots); red means the cell is blocked |
+| `Shift` + left click | Place and keep the candle selected |
+| Right click / `Esc` | Cancel (`Esc` pauses when nothing is selected) |
+| Hover a placed candle | Shows its ranges |
+| Click a burnt-out candle | Open Rebuild (`R`, costs part of the price) / Clear away (`X`, frees the cell, small wax refund) |
+| `B` or click the BURNT OUT counter | Jump to the next burnt-out candle |
+
+### Night lighting
+
+`NightLighting` (`Assets/Scripts/Lighting/NightLighting.cs`, added by `TowerBuilder`) keeps the night dark: a low
+moonlight-blue ambient per sorting layer (floor 0.06, path 0.05, props 0.06, enemies 0.025), plus `MoonClouds`, a large
+sprite light with a tileable cloud cookie drifting across the floor, path and props, so soft patches of moonlight come
+and go (light, not a fog overlay). Add the component to a map's GameManager to tune levels, cloud coverage and wind.
+
+Enemies stay near-black silhouettes outside candlelight; `EnemyGlow` overlays their eyes (and the golem's cracks) through
+`Assets/Resources/Shaders/EnemyGlow.shader`, unlit and HDR, so the camera's Bloom makes them glow. Burnt-out candles
+smoulder (`Smoulder`: a faint breathing ember light and smoke wisps) and brighten when hovered.
+
 ## Sandbox (editor only)
 
 1. Run **Candlepath > Wire Sprite Animations** once (creates the tower and enemy prefabs).

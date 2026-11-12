@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 
@@ -38,7 +39,7 @@ public static class MapBuilder
     {
         public string DisplayName, SceneName, AssetName;
         public string[] Spawns;       // node names enemies start on
-        public string Lamp;           // last node
+        public string[] Lamps;        // path ends (nodes with no next); the Eternal Lamp stands at the first, copies at the others
         public Node[] Nodes;
         public int StartingWax;
         public int Waves;
@@ -54,6 +55,24 @@ public static class MapBuilder
         public string Sprite;
         public int X, Y, Width;
         public float Lift;
+        public Color Tint = Color.white;
+    }
+
+    // Lift for props standing on a decor_table / on the decor_commode altar; tall shelves on the top row are
+    // nudged down so their tops stay on screen
+    const float TableTop = 0.55f, AltarTop = 0.8f, WallBack = -0.3f;
+
+    // The camera (CameraFit, 16:9) shows x -8.9..8.9, so columns -10 and 9 are off screen
+    const int VisibleMinX = -9, VisibleMaxX = 8;
+    const float ScreenRightX = 5f * 16f / 9f;   // right edge of the 16:9 view (orthographic size 5)
+
+    static readonly Color Burgundy = new Color(0.62f, 0.3f, 0.26f);   // for the white leather armchair
+    static readonly Color Stone = new Color(0.62f, 0.6f, 0.58f);      // takes the glare off the white marble busts
+
+    static Prop Tinted(Prop p, Color tint)
+    {
+        p.Tint = tint;
+        return p;
     }
 
     static Prop P(string sprite, int x, int y, int width = 1, float lift = 0f) =>
@@ -63,20 +82,21 @@ public static class MapBuilder
         new Node { Name = name, Cell = new Vector2Int(x, y), Next = next };
 
     // Biblioteka (design doc sketch): one road, a diagonal fork into two parallel lanes; enemies pick a lane at
-    // random. The lanes run to the right edge and meet in front of the Eternal Lamp.
+    // random. Each lane runs to the right edge (x=8, the last column on screen) and ends at a lamp: the Eternal
+    // Lamp at the top one, a copy of it at the bottom one. Either end takes the same flame.
     //
-    //   y= 2               U1 ------------- U2
-    //                     /                   |
-    //   y=-1  S ------- F                     Lamp
-    //                     \                   |
-    //   y=-4               L1 ------------- L2
+    //   y= 2               U1 ------------- U2 (lamp)
+    //                     /
+    //   y=-1  S ------- F
+    //                     \
+    //   y=-4               L1 ------------- L2 (lamp)
     static readonly MapLayout Library = new MapLayout
     {
         DisplayName = "Biblioteka",
         SceneName = "Map_2",
         AssetName = "Biblioteka",
         Spawns = new[] { "S" },
-        Lamp = "Lamp",
+        Lamps = new[] { "U2", "L2" },
         StartingWax = 500,
         Waves = 25,
         Music = "biblioteka_exploration_theme.ogg",
@@ -84,26 +104,34 @@ public static class MapBuilder
         PathTile = "path_library",
         Decor = new[]
         {
-            // shelving along the top and bottom walls
-            P("decor_bookshelf", -9, 4, 2), P("decor_shelf", -6, 4), P("decor_bookshelf", -3, 4, 2),
-            P("decor_shelf", 1, 4), P("decor_bookshelf", 3, 4, 2), P("decor_shelf", 7, 4),
-            P("decor_shelf", -9, -5), P("decor_bookshelf", -7, -5, 2), P("decor_crate", -4, -5),
-            P("decor_bookshelf", 0, -5, 2), P("decor_shelf", 4, -5), P("decor_bookshelf", 7, -5, 2),
-            // reading corners
-            P("decor_reading_table", -8, 1), P("decor_books", -8, 1, 1, 0.32f),
-            P("decor_reading_table", -8, -3), P("decor_crate", -6, -3),
-            P("decor_reading_table", 1, 0), P("decor_books", 1, 0, 1, 0.32f),
-            P("decor_reading_table", 6, -2), P("decor_crate", 8, 0),
+            // the top wall is shelved end to end, broken by a carved cabinet and a chest of drawers with a candlestick
+            P("decor_bookshelf_tall", -9, 4, 2, WallBack), P("decor_bookshelf_tall", -7, 4, 2, WallBack),
+            P("decor_cabinet", -5, 4, 2, WallBack), P("decor_bookshelf_tall", -3, 4, 2, WallBack), P("decor_bookshelf_tall", -1, 4, 2, WallBack),
+            P("decor_commode", 1, 4, 2, WallBack), P("decor_candlestick", 1, 4, 1, AltarTop + WallBack),
+            P("decor_book_stack", 2, 4, 1, AltarTop + WallBack),
+            P("decor_bookshelf_tall", 3, 4, 2, WallBack), P("decor_bookshelf_tall", 5, 4, 2, WallBack),
+            P("decor_bookshelf_tall", 7, 4, 2, WallBack),
+            // low shelves along the bottom wall, so they don't hide the lane above them; armchairs in burgundy
+            P("decor_bookshelf_low", -9, -5, 2), P("decor_vintage_cabinet", -7, -5), Tinted(P("decor_armchair", -6, -5), Burgundy),
+            P("decor_bookshelf_low", -3, -5, 2), P("decor_book_stack", -1, -5), P("decor_bookshelf_low", 1, -5, 2),
+            P("decor_commode", 4, -5, 2), P("decor_oil_lamp", 4, -5, 1, AltarTop), P("decor_bookshelf_low", 7, -5, 2),
+            // between the lanes: two freestanding low shelves and a reading table
+            P("decor_bookshelf_low", 0, -1, 2), P("decor_table", 3, -1), P("decor_chair", 3, 0),
+            P("decor_book_stack", 3, -1, 1, TableTop), P("decor_bookshelf_low", 5, -1, 2),
+            // reading corners by the entrance
+            P("decor_table", -8, 2), P("decor_chair", -8, 3), P("decor_oil_lamp", -8, 2, 1, TableTop),
+            Tinted(P("decor_armchair", -6, 3), Burgundy),
+            P("decor_table", -8, -3), P("decor_chair", -8, -2), P("decor_chess", -8, -3, 1, TableTop),
+            P("decor_book_stack", -6, -4),
         },
         Nodes = new[]
         {
             N("S", -10, -1, "F"),
             N("F", -5, -1, "U1", "L1"),
             N("U1", -2, 2, "U2"),
-            N("U2", 9, 2, "Lamp"),
+            N("U2", 8, 2),
             N("L1", -2, -4, "L2"),
-            N("L2", 9, -4, "Lamp"),
-            N("Lamp", 9, -1),
+            N("L2", 8, -4),
         },
     };
 
@@ -121,7 +149,7 @@ public static class MapBuilder
         SceneName = "Map_3",
         AssetName = "Koplycia",
         Spawns = new[] { "L", "T1", "B1", "T2", "B2" },
-        Lamp = "Lamp",
+        Lamps = new[] { "Lamp" },
         StartingWax = 600,
         Waves = 30,
         Music = "koplycia_church_theme.ogg",
@@ -129,15 +157,16 @@ public static class MapBuilder
         PathTile = "path_chapel",
         Decor = new[]
         {
-            // pews in rows facing the long corridor
-            P("decor_pew", -3, 3, 2), P("decor_pew", 0, 3, 2), P("decor_pew", 2, 3, 2),
-            P("decor_pew", -3, -4, 2), P("decor_pew", 0, -4, 2), P("decor_pew", 2, -4, 2),
-            P("decor_pew", -9, 2, 2), P("decor_pew", -9, -3, 2), P("decor_pew", 7, 3, 2), P("decor_pew", 7, -4, 2),
-            // busts in the corners, candleholders by the crossings
-            P("decor_bust", -10, 4), P("decor_bust", 9, 4), P("decor_bust", -10, -5), P("decor_bust", 9, -5),
-            P("decor_candleholders", -4, 0), P("decor_candleholders", 4, 0),
-            P("decor_candleholders", -4, -2), P("decor_candleholders", 4, -2),
-            P("decor_candleholders", 7, 0), P("decor_candleholders", -8, 0),
+            // pews in rows on both sides of the long corridor, with an aisle at x=0 between the corridors
+            P("decor_pew", -9, 3, 2), P("decor_pew", -7, 3, 2), P("decor_pew", -4, 3, 2), P("decor_pew", -2, 3, 2),
+            P("decor_pew", 1, 3, 2), P("decor_pew", 3, 3, 2), P("decor_pew", 6, 3, 2),
+            P("decor_pew", -9, -4, 2), P("decor_pew", -7, -4, 2), P("decor_pew", -4, -4, 2), P("decor_pew", -2, -4, 2),
+            P("decor_pew", 1, -4, 2), P("decor_pew", 3, -4, 2), P("decor_pew", 6, -4, 2),
+            // busts closing the aisle at both walls
+            Tinted(P("decor_bust", 0, 4), Stone), Tinted(P("decor_bust", 0, -5), Stone),
+            // the altar by the Eternal Lamp: carved chest of drawers with the candleholders on it.
+            // No candles on the floor: they'd read as the player's candles.
+            P("decor_commode", 7, 1, 2), P("decor_candleholders", 7, 1, 2, AltarTop),
         },
         Nodes = new[]
         {
@@ -157,18 +186,20 @@ public static class MapBuilder
     static readonly Prop[] RusysDecor =
     {
         // top wall
-        P("decor_barrel", -10, 4), P("decor_barrel", -9, 4), P("decor_crate_small", -7, 4), P("decor_bucket", -3, 4),
+        P("decor_barrel", -9, 4), P("decor_crate_small", -7, 4), P("decor_bucket", -3, 4),
         P("decor_tub", -1, 4), P("decor_barrel", 0, 4), P("decor_barrel", 1, 4), P("decor_crate", 4, 4),
         P("decor_bottles", 4, 4, 1, 0.32f), P("decor_barrel", 8, 4), P("decor_barrel", 8, 3), P("decor_crate_small", 5, 2),
         // left block above the entry road
-        P("decor_barrel", -9, 1), P("decor_crate", -8, 1), P("decor_bottles", -8, 1, 1, 0.32f), P("decor_bucket", -10, 0),
+        P("decor_barrel", -9, 1), P("decor_crate", -8, 1), P("decor_bottles", -8, 1, 1, 0.32f), P("decor_bucket", -9, 0),
         // inside the first bend and the middle
         P("decor_tub", -4, 0), P("decor_crate_small", -2, -2), P("decor_barrel", -3, -3), P("decor_basket", 0, -1),
-        P("decor_crate", 4, -2), P("decor_basket", 5, -3), P("decor_bucket", 9, 1),
+        P("decor_crate", 4, -2), P("decor_basket", 5, -3), P("decor_bucket", 8, 1),
         // bottom wall and right corner
-        P("decor_barrel", -10, -5), P("decor_barrel", -9, -5), P("decor_crate_small", -6, -5), P("decor_tub", -2, -4),
-        P("decor_crate", 0, -5), P("decor_barrel", 1, -4), P("decor_barrel", 5, -5), P("decor_bucket", 9, -5),
+        P("decor_barrel", -9, -5), P("decor_crate_small", -6, -5), P("decor_tub", -2, -4),
+        P("decor_crate", 0, -5), P("decor_barrel", 1, -4), P("decor_barrel", 5, -5),
         P("decor_barrel", 8, -3), P("decor_crate_small", 8, -4),
+        // chests and cheese boxes
+        P("decor_chest", -5, 4), P("decor_chest", 6, -5), P("decor_cheese_box", 4, -2, 1, 0.32f), P("decor_cheese_box", -7, -5),
     };
 
     [MenuItem("Candlepath/Build Maps")]
@@ -225,8 +256,44 @@ public static class MapBuilder
         if (AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath) != null) AssetDatabase.DeleteAsset(scenePath);
         AssetDatabase.CopyAsset(TemplateScene, scenePath);
         var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
-
         var grid = Object.FindFirstObjectByType<Grid>();
+
+        BuildPath(layout, grid);
+        BuildDecor(layout, grid);
+        EnsureMusicPlayer();
+        EnsureNightAmbient();
+
+        EditorSceneManager.MarkSceneDirty(scene);
+        EditorSceneManager.SaveScene(scene);
+        RenderPreview(PreviewName(layout));
+    }
+
+    /// <summary>
+    /// Repaints the path, rebuilds the PathNode graph and moves the Eternal Lamp in the existing Biblioteka and
+    /// Koplyčia scenes, then re-places the props around the new path; everything else in the scenes is kept.
+    /// </summary>
+    [MenuItem("Candlepath/Rebuild Map Paths")]
+    public static void RebuildPaths()
+    {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+        foreach (var layout in new[] { Library, Chapel })
+        {
+            var scene = EditorSceneManager.OpenScene($"Assets/Maps/{layout.SceneName}.unity", OpenSceneMode.Single);
+            var grid = Object.FindFirstObjectByType<Grid>();
+            BuildPath(layout, grid);
+            BuildDecor(layout, grid);
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+            RenderPreview(PreviewName(layout));
+            SetPreview(MapAssetPath(layout), PreviewName(layout));
+        }
+        AssetDatabase.SaveAssets();
+        Debug.Log("MapBuilder: paths and lamps rebuilt in Biblioteka (Map_2) and Koplyčia (Map_3).");
+    }
+
+    // Tiles, PathNode graph and Eternal Lamp for the open scene
+    static void BuildPath(MapLayout layout, Grid grid)
+    {
         var ground = FindTilemap("Ground");
         var pathMap = FindTilemap("Path");
         var floorTile = EnsureTile(layout.FloorTile);
@@ -238,7 +305,11 @@ public static class MapBuilder
         for (int x = MinX; x <= MaxX; x++)
             for (int y = MinY; y <= MaxY; y++)
                 ground.SetTile(new Vector3Int(x, y, 0), floorTile);
-        foreach (var c in PathCells(layout))
+        var cells = PathCells(layout);
+        // ends in the last column on screen: one more (off-screen) tile, so the path runs out past the edge
+        foreach (var end in layout.Lamps.Select(name => layout.Nodes.First(n => n.Name == name).Cell))
+            if (end.x == VisibleMaxX) cells.Add(end + Vector2Int.right);
+        foreach (var c in cells)
         {
             ground.SetTile(new Vector3Int(c.x, c.y, 0), pathTile);
             pathMap.SetTile(new Vector3Int(c.x, c.y, 0), pathTile);
@@ -276,18 +347,56 @@ public static class MapBuilder
             spawns.GetArrayElementAtIndex(i).objectReferenceValue = nodes[layout.Spawns[i]];
         pathSo.ApplyModifiedPropertiesWithoutUndo();
 
-        // Eternal Lamp sits at the end of the path (Rusys offsets it slightly from the last node)
+        // Eternal Lamp (with its light) sits at the first path end (Rusys offsets it slightly from the last node);
+        // the other ends get a copy of it without the EternalLamp logic, which the lamp dims and flashes with itself
         var lamp = Object.FindFirstObjectByType<EternalLamp>();
-        if (lamp != null)
-            lamp.transform.position = nodes[layout.Lamp].transform.position + new Vector3(-0.14f, 0.24f, 0f);
-        else
-            Debug.LogWarning("MapBuilder: template has no EternalLamp, place it manually in " + scenePath);
+        if (lamp == null)
+        {
+            Debug.LogWarning("MapBuilder: no EternalLamp in " + layout.SceneName + ", place it manually");
+            return;
+        }
+        Vector3 LampAt(string node)
+        {
+            var p = nodes[node].transform.position + new Vector3(-0.14f, 0.24f, 0f);
+            // an end in the last column on screen: centre the light on the screen edge, so half of it shows
+            if (layout.Nodes.First(n => n.Name == node).Cell.x == VisibleMaxX) p.x = ScreenRightX;
+            return p;
+        }
+        lamp.transform.position = LampAt(layout.Lamps[0]);
 
-        BuildDecor(layout, grid);
-        EnsureMusicPlayer();
+        foreach (var old in Object.FindObjectsByType<FlickerLight>(FindObjectsSortMode.None))
+            if (old.name.StartsWith(LampCopyName)) Object.DestroyImmediate(old.gameObject);
+        var copies = new List<FlickerLight>();
+        for (int i = 1; i < layout.Lamps.Length; i++)
+        {
+            var copy = Object.Instantiate(lamp.gameObject, lamp.transform.parent);
+            copy.name = $"{LampCopyName} {layout.Lamps[i]}";
+            Object.DestroyImmediate(copy.GetComponent<EternalLamp>());
+            copy.transform.position = LampAt(layout.Lamps[i]);
+            copies.Add(copy.GetComponent<FlickerLight>());
+        }
+        var lampSo = new SerializedObject(lamp);
+        var ends = lampSo.FindProperty("otherEnds");
+        ends.arraySize = copies.Count;
+        for (int i = 0; i < copies.Count; i++) ends.GetArrayElementAtIndex(i).objectReferenceValue = copies[i];
+        lampSo.ApplyModifiedPropertiesWithoutUndo();
+        HideLampSprites();
+    }
 
-        EditorSceneManager.MarkSceneDirty(scene);
-        EditorSceneManager.SaveScene(scene);
+    const string LampCopyName = "eternal_lamp end";
+
+    // The path ends show only the lamp's light, not a lamp: switch off the sprite on the lamp and its copies
+    // (it used to sit on the Default sorting layer, under the floor tiles)
+    static void HideLampSprites()
+    {
+        var lamp = Object.FindFirstObjectByType<EternalLamp>();
+        if (lamp == null) return;
+        foreach (var f in Object.FindObjectsByType<FlickerLight>(FindObjectsSortMode.None))
+        {
+            if (f.gameObject != lamp.gameObject && !f.name.StartsWith(LampCopyName)) continue;
+            var sr = f.GetComponent<SpriteRenderer>();
+            if (sr != null) sr.enabled = false;
+        }
     }
 
     // ---------------------------------------------------------------- tiles and decor
@@ -338,20 +447,109 @@ public static class MapBuilder
     [MenuItem("Candlepath/Decorate Rusys")]
     public static void DecorateRusys()
     {
-        var scene = EditorSceneManager.OpenScene(TemplateScene, OpenSceneMode.Single);
+        Redecorate(TemplateScene, RusysDecor, RusysMapPath, "rusys_background");
+
+        var rusys = AssetDatabase.LoadAssetAtPath<MapDefinition>(RusysMapPath);
+        if (rusys != null) SetMusic(rusys, RusysMusic);
+    }
+
+    /// <summary>Swaps the props in all three map scenes for the current layouts; tiles, path, lamp and waves are left alone.</summary>
+    [MenuItem("Candlepath/Redecorate Maps")]
+    public static void RedecorateAll()
+    {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+        DecorateRusys();
+        foreach (var layout in new[] { Library, Chapel })
+            Redecorate($"Assets/Maps/{layout.SceneName}.unity", layout.Decor, MapAssetPath(layout), PreviewName(layout));
+        AssetDatabase.SaveAssets();
+        Debug.Log("MapBuilder: props, night lighting and map-card previews updated for Rusys, Biblioteka and Koplyčia.");
+    }
+
+    static string MapAssetPath(MapLayout layout) => $"Assets/Data/Maps/{layout.AssetName}.asset";
+    static string PreviewName(MapLayout layout) => layout.AssetName.ToLowerInvariant() + "_background";
+
+    // Replaces only the scene's "Decor" object (path cells are read from its Path tilemap), saves the night
+    // lighting into the scene and renders the map's card image
+    static void Redecorate(string scenePath, Prop[] props, string mapAssetPath, string previewName)
+    {
+        var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
         var grid = Object.FindFirstObjectByType<Grid>();
         var pathCells = new HashSet<Vector2Int>();
         var pathMap = FindTilemap("Path");
         foreach (var c in pathMap.cellBounds.allPositionsWithin)
             if (pathMap.HasTile(c)) pathCells.Add(new Vector2Int(c.x, c.y));
 
-        BuildDecor(RusysDecor, pathCells, grid);
+        BuildDecor(props, pathCells, grid);
+        HideLampSprites();
         EnsureMusicPlayer();
+        EnsureNightAmbient();
         EditorSceneManager.MarkSceneDirty(scene);
         EditorSceneManager.SaveScene(scene);
+        RenderPreview(previewName);
+        SetPreview(mapAssetPath, previewName);
+    }
 
-        var rusys = AssetDatabase.LoadAssetAtPath<MapDefinition>(RusysMapPath);
-        if (rusys != null) SetMusic(rusys, RusysMusic);
+    // Saves the game's night ambient (NightLighting's values) in the scene as global lights, so the editor's Game
+    // view looks like play mode: dark floor and path, dim props, near-black enemies. At runtime NightLighting finds
+    // these lights and sets the same values; only the drifting moonlight and candlelight are added in play mode.
+    static void EnsureNightAmbient()
+    {
+        var root = GameObject.Find("NightAmbient") ?? new GameObject("NightAmbient");
+        var temp = new GameObject("NightLightingTemp");
+        temp.AddComponent<NightLighting>().Apply();   // retunes existing global lights, adds the missing ones under temp
+        for (int i = temp.transform.childCount - 1; i >= 0; i--)
+            temp.transform.GetChild(i).SetParent(root.transform, true);
+        Object.DestroyImmediate(temp);
+    }
+
+    // Map-card image: the open scene through the game camera, evenly lit so the props show
+    // (darkness and candlelight are the game's job). Writes Assets/Environment/{name}.png.
+    const float PreviewLight = 0.8f;
+
+    static void RenderPreview(string name)
+    {
+        var cam = Camera.main;
+        var globals = Object.FindObjectsByType<Light2D>(FindObjectsSortMode.None)
+            .Where(l => l.lightType == Light2D.LightType.Global && l.enabled).ToList();
+        foreach (var l in globals) l.enabled = false;
+
+        var temp = new GameObject("PreviewLight");
+        temp.SetActive(false);
+        var light = temp.AddComponent<Light2D>();
+        light.targetSortingLayers = SortingLayer.layers.Select(l => l.id).ToArray();
+        light.lightType = Light2D.LightType.Global;
+        light.intensity = PreviewLight;
+        temp.SetActive(true);
+
+        const int w = 1920, h = 1080;
+        var rt = new RenderTexture(w, h, 24);
+        cam.targetTexture = rt;
+        cam.Render();
+        cam.targetTexture = null;
+        RenderTexture.active = rt;
+        var tex = new Texture2D(w, h, TextureFormat.RGB24, false);
+        tex.ReadPixels(new Rect(0, 0, w, h), 0, 0);
+        tex.Apply();
+        RenderTexture.active = null;
+        System.IO.File.WriteAllBytes($"{EnvDir}{name}.png", tex.EncodeToPNG());
+
+        Object.DestroyImmediate(tex);
+        rt.Release();
+        Object.DestroyImmediate(rt);
+        Object.DestroyImmediate(temp);
+        foreach (var l in globals) l.enabled = true;
+        AssetDatabase.ImportAsset($"{EnvDir}{name}.png");
+    }
+
+    static void SetPreview(string mapAssetPath, string previewName)
+    {
+        var map = AssetDatabase.LoadAssetAtPath<MapDefinition>(mapAssetPath);
+        var sprite = EnsurePreview(previewName);
+        if (map == null || sprite == null) return;
+        var so = new SerializedObject(map);
+        so.FindProperty("<Preview>k__BackingField").objectReferenceValue = sprite;
+        so.ApplyModifiedPropertiesWithoutUndo();
+        EditorUtility.SetDirty(map);
     }
 
     /// <summary>Adds the object that plays MapDefinition.Music in this scene (once).</summary>
@@ -403,6 +601,9 @@ public static class MapBuilder
                 continue;
             }
 
+            if (prop.X < VisibleMinX || prop.X + prop.Width - 1 > VisibleMaxX)
+                Debug.LogWarning($"MapBuilder: {prop.Sprite} at ({prop.X},{prop.Y}) is outside the camera view");
+
             var go = new GameObject(prop.Sprite);
             go.transform.SetParent(root.transform, false);
             Vector3 left = grid.GetCellCenterWorld(new Vector3Int(prop.X, prop.Y, 0));
@@ -411,6 +612,7 @@ public static class MapBuilder
 
             var sr = go.AddComponent<SpriteRenderer>();
             sr.sprite = EnsureDecorSprite(prop.Sprite);
+            sr.color = prop.Tint;
             if (litMaterial != null) sr.sharedMaterial = litMaterial;
             sr.sortingLayerID = candlesLayer;
             sr.sortingOrder = -prop.Y * 4 + (prop.Lift > 0 ? 1 : 0);   // lower rows in front; a prop on a table above it
@@ -514,7 +716,7 @@ public static class MapBuilder
         var so = new SerializedObject(map);
         so.FindProperty("<DisplayName>k__BackingField").stringValue = layout.DisplayName;
         so.FindProperty("<SceneName>k__BackingField").stringValue = layout.SceneName;
-        var preview = EnsurePreview(layout.AssetName.ToLowerInvariant() + "_background");
+        var preview = EnsurePreview(PreviewName(layout));
         if (preview != null) so.FindProperty("<Preview>k__BackingField").objectReferenceValue = preview;
         so.ApplyModifiedPropertiesWithoutUndo();
         SetMusic(map, layout.Music);
@@ -533,12 +735,12 @@ public static class MapBuilder
         return map;
     }
 
-    /// <summary>Map-card image Assets/Environment/{name}.png (made by Art/make_map_previews.py), imported as a sprite.</summary>
+    /// <summary>Map-card image Assets/Environment/{name}.png (made by RenderPreview), imported as a sprite.</summary>
     static Sprite EnsurePreview(string name)
     {
         string png = $"{EnvDir}{name}.png";
         var importer = AssetImporter.GetAtPath(png) as TextureImporter;
-        if (importer == null) { Debug.LogWarning("MapBuilder: no preview " + png + ", run Art/make_map_previews.py"); return null; }
+        if (importer == null) { Debug.LogWarning("MapBuilder: no preview " + png + ", run Candlepath > Redecorate Maps"); return null; }
         importer.textureType = TextureImporterType.Sprite;
         importer.spriteImportMode = SpriteImportMode.Single;
         importer.mipmapEnabled = false;

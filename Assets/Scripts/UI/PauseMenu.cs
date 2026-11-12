@@ -32,6 +32,9 @@ public class PauseMenu : MonoBehaviour
 
         if (keyboard.escapeKey.wasPressedThisFrame)
         {
+            // Esc first backs out of candle placement / the burnt-candle popup, then pauses
+            if (!IsPaused && TowerBuilder.Instance != null && TowerBuilder.Instance.CancelInteraction()) return;
+
             if (IsPaused) Resume();
             else Pause();
         }

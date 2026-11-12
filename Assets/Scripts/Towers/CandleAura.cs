@@ -10,6 +10,7 @@ public class CandleAura : MonoBehaviour
     [SerializeField] private float colorLerpSpeed = 6f;
 
     public bool IsAttacking { get; private set; }
+    public float Radius => radius;
 
     private Color idleColor;
 
