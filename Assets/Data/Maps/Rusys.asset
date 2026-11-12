@@ -17,8 +17,20 @@ MonoBehaviour:
   <Preview>k__BackingField: {fileID: 21300000, guid: d64338a12bd0f524ea31932efb80a52c, type: 3}
   difficulties:
   - <Difficulty>k__BackingField: 0
-    <WaveSet>k__BackingField: {fileID: 11400000, guid: a16dae04f866245f6a87809cdd2d974d, type: 2}
+    <WaveSet>k__BackingField: {fileID: 11400000, guid: f27be564d2009524daf0519dbf203413, type: 2}
     <StartingWax>k__BackingField: 500
     <StartingFlame>k__BackingField: 100
     <EnemySpeedMultiplier>k__BackingField: 1
     <EnemyHealthMultiplier>k__BackingField: 1
+  - <Difficulty>k__BackingField: 1
+    <WaveSet>k__BackingField: {fileID: 11400000, guid: f27be564d2009524daf0519dbf203413, type: 2}
+    <StartingWax>k__BackingField: 300
+    <StartingFlame>k__BackingField: 50
+    <EnemySpeedMultiplier>k__BackingField: 1.5
+    <EnemyHealthMultiplier>k__BackingField: 1.2
+  - <Difficulty>k__BackingField: 2
+    <WaveSet>k__BackingField: {fileID: 11400000, guid: f27be564d2009524daf0519dbf203413, type: 2}
+    <StartingWax>k__BackingField: 100
+    <StartingFlame>k__BackingField: 25
+    <EnemySpeedMultiplier>k__BackingField: 2
+    <EnemyHealthMultiplier>k__BackingField: 1.5

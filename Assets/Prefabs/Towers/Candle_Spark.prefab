@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3384666343278802037}
   - component: {fileID: 5862388989163870584}
   - component: {fileID: 8878855590203606422}
+  - component: {fileID: 972846651660247123}
   m_Layer: 0
   m_Name: Candle_Spark
   m_TagString: Untagged
@@ -243,3 +244,17 @@ MonoBehaviour:
     - {fileID: 4383745053949623252, guid: 328b5347c914ecc42aa5cc8d1197372e, type: 3}
     fps: 10
   randomizeStart: 1
+--- !u!114 &972846651660247123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3098719459465356066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f953ae699b02b5f449ebfc15c2a63380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tower
+  displayName: Candle_spark
+  waxCost: 100

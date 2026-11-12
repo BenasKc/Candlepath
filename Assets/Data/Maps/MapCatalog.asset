@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapCatalog
   maps:
   - {fileID: 11400000, guid: aa32fd188c7be4ca48cec152c2f357a3, type: 2}
+  - {fileID: 11400000, guid: 613aacbcb40cb984eae1913db43cc4ae, type: 2}
