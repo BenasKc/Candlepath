@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         Movement = GetComponent<PathFollower>();
         Movement.ReachedEnd += ReachLamp;
+        if (GetComponent<EnemyGlow>() == null) gameObject.AddComponent<EnemyGlow>(); // eyes glow in the dark
     }
 
     public void Kill()

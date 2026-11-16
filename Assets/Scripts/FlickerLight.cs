@@ -22,6 +22,9 @@ public class FlickerLight : MonoBehaviour
     private float randomizer;
     private bool isBurning = true;
 
+    public bool IsBurnedOut => !isBurning;
+    public event System.Action BurnedOut;
+
     void Start()
     {
         randomizer = Random.Range(0f, 100f);
@@ -43,7 +46,13 @@ public class FlickerLight : MonoBehaviour
     {
         for (int i = 1; i < sprites.Length; i++)
         {
-            yield return new WaitForSeconds(timeBetweenChanges);
+            // Burn time only passes during waves (see WaveSpawner.CandlesBurn)
+            float burnt = 0f;
+            while (burnt < timeBetweenChanges)
+            {
+                yield return null;
+                if (WaveSpawner.CandlesBurn) burnt += Time.deltaTime;
+            }
             
             if (frameAnimator != null) frameAnimator.SetStage(i);
             else spriteRenderer.sprite = sprites[i];
@@ -56,6 +65,7 @@ public class FlickerLight : MonoBehaviour
         }
 
         isBurning = false;
-        lanternLight.intensity = 0f; 
+        lanternLight.intensity = 0f;
+        BurnedOut?.Invoke();
     }
 }

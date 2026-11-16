@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -9,6 +10,8 @@ public class EternalLamp : MonoBehaviour
     [SerializeField] private Color hitColor = new Color(0.6f, 0.3f, 1f);   // shadow-purple flash
     [SerializeField] private float hitFlashTime = 0.25f;
     [SerializeField, Range(0f, 1f)] private float minBrightness = 0.15f;   // light level just before it dies
+    [Tooltip("Copies of the lamp at other path ends (sprite, light and FlickerLight, no EternalLamp): they dim and flash with this one")]
+    [SerializeField] private FlickerLight[] otherEnds = new FlickerLight[0];
 
     [Header("UI")]
     [SerializeField] private TMP_Text flameText;
@@ -18,9 +21,19 @@ public class EternalLamp : MonoBehaviour
     public static bool IsGameOver { get; private set; }
     public int Flame { get; private set; }
     public int MaxFlame { get; private set; } = 100;
+    public event Action<int> Damaged; // flame lost
 
-    private float baseMin, baseMax, flashTimer;
-    private Color baseColor;
+    private float flashTimer;
+
+    // This lamp and its copies: the light dims and the sprite flashes on all of them
+    private struct LampLight
+    {
+        public FlickerLight flicker;
+        public SpriteRenderer sprite;
+        public float baseMin, baseMax;
+        public Color baseColor;
+    }
+    private LampLight[] lights;
 
     void Awake()
     {
@@ -29,9 +42,13 @@ public class EternalLamp : MonoBehaviour
         if (flicker == null) flicker = GetComponent<FlickerLight>();
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
 
-        baseMin = flicker.minIntensity;
-        baseMax = flicker.maxIntensity;
-        baseColor = spriteRenderer.color;
+        lights = new LampLight[otherEnds.Length + 1];
+        for (int i = 0; i < lights.Length; i++)
+        {
+            var f = i == 0 ? flicker : otherEnds[i - 1];
+            var sr = i == 0 ? spriteRenderer : f.GetComponent<SpriteRenderer>();
+            lights[i] = new LampLight { flicker = f, sprite = sr, baseMin = f.minIntensity, baseMax = f.maxIntensity, baseColor = sr.color };
+        }
         if (endPanel != null) endPanel.SetActive(false);
     }
 
@@ -42,6 +59,10 @@ public class EternalLamp : MonoBehaviour
 
         spawner.EnemyReachedLamp += OnEnemyReachedLamp;
         spawner.AllWavesCleared += OnAllWavesCleared;
+
+        // The HUD strip replaces the plain flame text (GameHud switches itself off without map settings)
+        if (flameText != null && spawner.Settings != null && FindFirstObjectByType<GameHud>() != null)
+            flameText.gameObject.SetActive(false);
         Refresh();
     }
 
@@ -55,9 +76,11 @@ public class EternalLamp : MonoBehaviour
     void OnEnemyReachedLamp(Enemy enemy)
     {
         if (IsGameOver) return;
-        Flame = Mathf.Max(0, Flame - enemy.LampDamage);
+        int lost = Mathf.Min(Flame, enemy.LampDamage);
+        Flame -= lost;
         flashTimer = hitFlashTime;
         Refresh();
+        Damaged?.Invoke(lost);
         if (Flame == 0) EndGame("The Eternal Lamp went out");
     }
 
@@ -70,21 +93,26 @@ public class EternalLamp : MonoBehaviour
     void Refresh()
     {
         float t = Mathf.Lerp(minBrightness, 1f, (float)Flame / MaxFlame);
-        flicker.minIntensity = baseMin * t;
-        flicker.maxIntensity = baseMax * t;
+        foreach (var l in lights)
+        {
+            l.flicker.minIntensity = l.baseMin * t;
+            l.flicker.maxIntensity = l.baseMax * t;
+        }
         if (flameText != null) flameText.text = $"Flame: {Flame}/{MaxFlame}";
     }
 
     void Update()
     {
         if (flashTimer > 0f) flashTimer -= Time.unscaledDeltaTime;
-        spriteRenderer.color = flashTimer > 0f ? hitColor : baseColor;
+        foreach (var l in lights)
+            l.sprite.color = flashTimer > 0f ? hitColor : l.baseColor;
     }
 
     void EndGame(string title)
     {
         IsGameOver = true;
-        if (Flame == 0) { flicker.minIntensity = 0f; flicker.maxIntensity = 0f; }
+        if (Flame == 0)
+            foreach (var l in lights) { l.flicker.minIntensity = 0f; l.flicker.maxIntensity = 0f; }
         Time.timeScale = 0f;
         if (endTitle != null) endTitle.text = title;
         if (endPanel != null) endPanel.SetActive(true);

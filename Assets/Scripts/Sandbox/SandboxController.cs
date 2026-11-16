@@ -63,6 +63,7 @@ public class SandboxController : MonoBehaviour
         path = FindFirstObjectByType<MapPath>();
 
         builder.enabled = false;
+        WaveSpawner.BurnBetweenWaves = true; // no waves here: candles burn all the time
         var spawner = FindFirstObjectByType<WaveSpawner>();
         if (spawner != null) spawner.enabled = false;
 
@@ -80,6 +81,7 @@ public class SandboxController : MonoBehaviour
 
     void OnDestroy()
     {
+        WaveSpawner.BurnBetweenWaves = false;
         if (ghost != null) Destroy(ghost.gameObject);
     }
 

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc947e540164cbc837e3f6e5400b1f0, type: 3}
+  m_Name: CandleCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::CandleCatalog
+  candles:
+  - displayName: Tea candle
+    prefab: {fileID: 3098719459465356066, guid: 8e8a3cc8c85cc3940bde1dac91b6a301, type: 3}
+    cost: 100
+    rebuildFactor: 0.6
+    salvageFactor: 0.1
+  - displayName: Long candle
+    prefab: {fileID: 3098719459465356066, guid: 1702e820f3e16c2efaeb338a05e25e90, type: 3}
+    cost: 150
+    rebuildFactor: 0.6
+    salvageFactor: 0.1
+  - displayName: Lantern
+    prefab: {fileID: 3098719459465356066, guid: f2ba60b9caba270d5bf352cc5999bc4c, type: 3}
+    cost: 200
+    rebuildFactor: 0.6
+    salvageFactor: 0.1
+  - displayName: Spark candle
+    prefab: {fileID: 3098719459465356066, guid: e6efdf3a364be7c81a1dd0c7247fdd06, type: 3}
+    cost: 250
+    rebuildFactor: 0.6
+    salvageFactor: 0.1
+  - displayName: Candelabra
+    prefab: {fileID: 3098719459465356066, guid: da796b5d88346887792b4fd7c4d98a42, type: 3}
+    cost: 325
+    rebuildFactor: 0.6
+    salvageFactor: 0.1

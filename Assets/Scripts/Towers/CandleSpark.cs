@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-// Second damage type: shoots a spark at ONE Shadow at a time (single-target burst on an interval),
-// unlike CandleAura, which burns EVERY Shadow inside the light continuously.
 public class CandleSpark : MonoBehaviour
 {
     [SerializeField] private Light2D candleLight;
@@ -13,6 +11,7 @@ public class CandleSpark : MonoBehaviour
     [SerializeField] private float fireInterval = 1.2f;    // seconds between shots
 
     public bool IsAttacking { get; private set; }
+    public float Range => range;
 
     private float cooldown;
 
