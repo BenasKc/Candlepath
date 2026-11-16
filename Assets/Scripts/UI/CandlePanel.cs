@@ -17,7 +17,7 @@ public class CandlePanel : MonoBehaviour
 
     const float Margin = 20f;
 
-    static bool folded; // kept across restarts in this session
+    static bool folded; // reset to expanded in Start
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private RectTransform panel;
@@ -91,6 +91,7 @@ public class CandlePanel : MonoBehaviour
             shownWax = bank.Wax;
         }
 
+        folded = false; // always start expanded
         ApplyFold();
         UpdateBurntBadge(0);
         Refresh();
