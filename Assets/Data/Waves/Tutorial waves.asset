@@ -15,7 +15,7 @@ MonoBehaviour:
   waves:
   - groups:
     - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
-      <Count>k__BackingField: 10
+      <Count>k__BackingField: 5
       <Interval>k__BackingField: 3
       <StartDelay>k__BackingField: 0
       <SpawnPoint>k__BackingField: -1
@@ -27,11 +27,6 @@ MonoBehaviour:
       <StartDelay>k__BackingField: 0
       <SpawnPoint>k__BackingField: -1
     - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: 2d9c1050d44774501b40398898e65474, type: 3}
-      <Count>k__BackingField: 5
-      <Interval>k__BackingField: 0.8
-      <StartDelay>k__BackingField: 0
-      <SpawnPoint>k__BackingField: -1
-    - <EnemyPrefab>k__BackingField: {fileID: 8177950103093855654, guid: d36d60d3a77c3b6a7b5eed9137125a1a, type: 3}
       <Count>k__BackingField: 5
       <Interval>k__BackingField: 0.8
       <StartDelay>k__BackingField: 0

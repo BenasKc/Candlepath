@@ -19,9 +19,55 @@ public class Tutorial : MonoBehaviour
     private bool candleSpawned = false;
     private bool burnedOut = false;
 
+    private CandlePanel candlePanel;
+
     void Start()
     {
         TMPro.text = IntroText;
+        candlePanel = FindFirstObjectByType<CandlePanel>(FindObjectsInactive.Include);
+        if (candlePanel != null) candlePanel.FoldToggled += OnFoldToggled;
+    }
+
+    void OnDestroy()
+    {
+        if (candlePanel != null) candlePanel.FoldToggled -= OnFoldToggled;
+    }
+
+    void OnFoldToggled(bool folded)
+    {
+        if (OnFoldStep()) NextTutorialMessage();
+    }
+
+    // The message on screen is MessageText[index - 1]; its arrow tells us if it's the fold step
+    bool OnFoldStep()
+    {
+        int shown = index - 1;
+        if (!TutorialCanvas.activeSelf || shown < 0 || shown >= MessageText.Length) return false;
+        if (Arrows == null || shown >= Arrows.Length || Arrows[shown] == null) return false;
+        var arrow = Arrows[shown].GetComponent<TutorialArrow>();
+        return arrow != null && arrow.target == TutorialArrow.Target.CandleFold;
+    }
+
+    // ClickCatcher (covers the whole screen): a click anywhere continues. On the fold step a click on the
+    // build panel's fold tab folds the panel too, which continues through OnFoldToggled.
+    public void ContinueClicked()
+    {
+        if (OnFoldStep() && candlePanel != null && OverFoldTab())
+        {
+            candlePanel.ToggleFold();
+            return;
+        }
+        NextTutorialMessage();
+    }
+
+    bool OverFoldTab()
+    {
+        var mouse = UnityEngine.InputSystem.Mouse.current;
+        RectTransform tab = candlePanel.FoldTarget;
+        if (mouse == null || tab == null || !tab.gameObject.activeInHierarchy) return false;
+        Canvas canvas = tab.GetComponentInParent<Canvas>();
+        Camera cam = canvas == null || canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.rootCanvas.worldCamera;
+        return RectTransformUtility.RectangleContainsScreenPoint(tab, mouse.position.ReadValue(), cam);
     }
 
     void Update()
