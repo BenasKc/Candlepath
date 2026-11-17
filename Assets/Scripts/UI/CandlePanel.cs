@@ -17,7 +17,7 @@ public class CandlePanel : MonoBehaviour
 
     const float Margin = 20f;
 
-    static bool folded; // kept across restarts in this session
+    static bool folded; // reset to expanded in Start
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private RectTransform panel;
@@ -47,6 +47,15 @@ public class CandlePanel : MonoBehaviour
     private Vector2 waxRowHome;
     private readonly List<CandleCard> cards = new List<CandleCard>();
 
+    public event System.Action<bool> FoldToggled; // player clicked the fold tab; true = now folded
+
+    // Where the tutorial arrows point (TutorialArrow)
+    public RectTransform WaxTarget => waxRow;
+    public RectTransform FoldTarget => foldTab != null ? (RectTransform)foldTab.transform : null;
+    public RectTransform BurntTarget => burntBadge != null ? (RectTransform)burntBadge.transform : null;
+    public RectTransform CardTarget(int i) => i >= 0 && i < cards.Count ? (RectTransform)cards[i].transform : null;
+    public RectTransform CostTarget(int i) => i >= 0 && i < cards.Count ? cards[i].cost.rectTransform : null;
+
     // ---------- Setup ----------
 
     void Start()
@@ -73,7 +82,7 @@ public class CandlePanel : MonoBehaviour
             cards.Add(card);
         }
 
-        foldTab.onClick = () => { folded = !folded; ApplyFold(); };
+        foldTab.onClick = ToggleFold;
         burntBadge.onEnter = () => burntCount.color = Ember;
         burntBadge.onExit = () => burntCount.color = TextLight;
         burntBadge.onClick = () => builder.SelectNextBurnt();
@@ -91,10 +100,19 @@ public class CandlePanel : MonoBehaviour
             shownWax = bank.Wax;
         }
 
+        folded = false; // always start expanded
         ApplyFold();
         UpdateBurntBadge(0);
         Refresh();
         OnBurntSelection(null);
+    }
+
+    // Fold tab click (the tutorial forwards clicks here while its click catcher covers the screen)
+    public void ToggleFold()
+    {
+        folded = !folded;
+        ApplyFold();
+        FoldToggled?.Invoke(folded);
     }
 
     void ApplyFold()

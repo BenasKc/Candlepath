@@ -90,6 +90,12 @@ public class GameHud : MonoBehaviour
 
     private float bannerAge = -1f;
 
+    // Where the tutorial arrows point (TutorialArrow)
+    public RectTransform FlameTarget => flameBlock != null ? (RectTransform)flameBlock.transform : null;
+    public RectTransform WaveTarget => waveBlock != null ? (RectTransform)waveBlock.transform : null;
+    public RectTransform StartWaveTarget => callButton != null ? (RectTransform)callButton.transform : null;
+    public RectTransform AutoWavesTarget => autoButton != null ? (RectTransform)autoButton.transform : null;
+
     // ---------- Setup ----------
 
     void Start()

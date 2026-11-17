@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8878855590203606422}
   m_Layer: 0
   m_Name: candle_tea_1_full
-  m_TagString: Untagged
+  m_TagString: CandleTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
