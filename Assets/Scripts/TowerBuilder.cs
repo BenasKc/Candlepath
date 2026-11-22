@@ -238,11 +238,11 @@ public class TowerBuilder : MonoBehaviour
 
         if (SelectedBurnt != null)
         {
-            if (keyboard.rKey.wasPressedThisFrame) RebuildSelected();
-            else if (keyboard.xKey.wasPressedThisFrame || keyboard.deleteKey.wasPressedThisFrame) ClearSelected();
+            if (GameSettings.Pressed(BindAction.Rebuild)) RebuildSelected();
+            else if (GameSettings.Pressed(BindAction.Clear) || keyboard.deleteKey.wasPressedThisFrame) ClearSelected();
         }
 
-        if (keyboard.bKey.wasPressedThisFrame) SelectNextBurnt();
+        if (GameSettings.Pressed(BindAction.NextBurnt)) SelectNextBurnt();
 
         if (!pauseMenuHandlesEscape && keyboard.escapeKey.wasPressedThisFrame) CancelInteraction();
     }

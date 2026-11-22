@@ -306,8 +306,8 @@ public class GameHud : MonoBehaviour
         UpdateBanner(dt);
 
         var keyboard = UnityEngine.InputSystem.Keyboard.current;
-        if (keyboard != null && keyboard.spaceKey.wasPressedThisFrame) CallWave();
-        if (keyboard != null && keyboard.cKey.wasPressedThisFrame) ToggleAuto();
+        if (keyboard != null && GameSettings.Pressed(BindAction.CallWave)) CallWave();
+        if (keyboard != null && GameSettings.Pressed(BindAction.AutoWaves)) ToggleAuto();
     }
 
     void UpdateFlame(float dt, float time)
