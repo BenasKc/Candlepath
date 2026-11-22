@@ -138,7 +138,7 @@ public static class SettingsPanel
         }
         var reset = Row(page, font, "");
         MakeButton(reset, font, "Reset to defaults", 300, 48, () => { GameSettings.ResetKeys(); controller.Refresh(); }, 24);
-        var hint = MakeText("Hint", page, font, "Candles 1-5, Esc and Delete cannot be rebound.", 22, TextDim, TextAlignmentOptions.Center);
+        var hint = MakeText("Hint", page, font, "Candle keys 1-9, Shift, Esc and Delete are reserved and can't be bound.", 22, TextDim, TextAlignmentOptions.Center);
         hint.margin = new Vector4(0, 8, 0, 0);
     }
 
@@ -314,6 +314,13 @@ public class SettingsController : MonoBehaviour
             foreach (var key in keyboard.allKeys)
             {
                 if (!key.wasPressedThisFrame || key.keyCode == Key.None || key.keyCode == Key.Escape) continue;
+                if (GameSettings.IsReserved(key.keyCode))
+                {
+                    // Keep listening and say why the key was refused
+                    if (keyLabels.TryGetValue(capturing.Value, out var label))
+                        label.text = GameSettings.KeyName(key.keyCode) + " is reserved";
+                    return;
+                }
                 GameSettings.SetKey(capturing.Value, key.keyCode);
                 capturing = null;
                 Refresh();

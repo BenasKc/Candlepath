@@ -72,11 +72,24 @@ public static class GameSettings
         { BindAction.Pause, Key.P },
     };
 
-    public static Key GetKey(BindAction action) =>
-        (Key)PlayerPrefs.GetInt(P + "key." + action, (int)Defaults[action]);
+    // Keys the game reads directly (TowerBuilder: candles 1-9 on both rows, Shift to keep placing, Delete;
+    // Esc everywhere). Binding an action to one of these would fire both, so they can't be bound.
+    public static bool IsReserved(Key key) =>
+        key == Key.None || key == Key.Escape || key == Key.Delete ||
+        key == Key.LeftShift || key == Key.RightShift ||
+        (key >= Key.Digit1 && key <= Key.Digit9) ||
+        (key >= Key.Numpad1 && key <= Key.Numpad9);
+
+    public static Key GetKey(BindAction action)
+    {
+        var key = (Key)PlayerPrefs.GetInt(P + "key." + action, (int)Defaults[action]);
+        // A binding saved before keys were reserved falls back to the default
+        return IsReserved(key) ? Defaults[action] : key;
+    }
 
     public static void SetKey(BindAction action, Key key)
     {
+        if (IsReserved(key)) return;
         // Swap with whichever action already uses this key so no two actions share one
         foreach (BindAction other in Enum.GetValues(typeof(BindAction)))
             if (other != action && GetKey(other) == key)
