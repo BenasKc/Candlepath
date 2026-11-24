@@ -6,17 +6,29 @@ using UnityEngine.UI;
 using static UiKit;
 
 // Credits screen of the main menu, built from code (no scene wiring): the team, then the sources of the music,
-// sound effects, textures, 3D models and fonts. Keep in sync with Assets/Music/LICENSES.md and
-// Art/Source/polyhaven/README.md. Esc or the Back button returns to the menu.
+// sound effects, textures, 3D models and fonts. Keep in sync with Assets/Music/LICENSES.md,
+// Assets/Sfx/LICENSES.md and Art/Source/polyhaven/README.md. Esc or the Back button returns to the menu.
 public static class CreditsPanel
 {
     const string Team =
         "Benas Kučinskas\nEimantas Labžentis\nNojus Cininas\nAugustas Kniška";
 
     // TODO: confirm the exact origin of Assets/Sfx/CandleLightSfx.mp3 (added without a note).
+    // CC BY / CC BY-NC sounds must be credited by name; the BBC licence requires its own credit line.
     const string Sfx =
-        "Recorded by the team and taken from CC0 libraries\n" +
-        "<size=70%><color=#9A8A70>freesound.org, OpenGameArt.org</color></size>";
+        "<i>Lights a candle light with a match</i> by straget\n" +
+        "<size=70%><color=#9A8A70>CC BY 4.0, freesound.org/s/419504</color></size>\n" +
+        "<i>Opening and closing Candle.wav</i> by 221313\n" +
+        "<size=70%><color=#9A8A70>CC BY-NC 4.0, freesound.org/s/655549</color></size>\n" +
+        "<i>lighting a candle</i> by Angelina.mandzavinos\n" +
+        "<size=70%><color=#9A8A70>CC BY-NC 4.0, freesound.org/s/764851</color></size>\n" +
+        "<i>Lighting+killing_candles_.wav</i> by AikenOli4\n" +
+        "<size=70%><color=#9A8A70>CC BY-NC 4.0, freesound.org/s/595403</color></size>\n" +
+        "Fire sound effects NHU05002102, 07002057, 07059050\n" +
+        "<size=70%><color=#9A8A70>bbc.co.uk – © copyright BBC, sound-effects.bbcrewind.co.uk</color></size>\n" +
+        "Further sounds by unfa, ReeseEarl6910, jptalty, staylor8, pcgeek86, SlowMoManVL, peppermintlark, " +
+        "fryzu82, devilqube, deadrobotmusic, roisin.gleeson, shelbyshark, JacobEmanuelMadrid\n" +
+        "<size=70%><color=#9A8A70>CC0, from freesound.org</color></size>";
 
     const string Music =
         "<i>Dark Cavern Ambient</i> by Paul Wortmann (Rusys)\n" +
