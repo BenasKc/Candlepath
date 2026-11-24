@@ -23,6 +23,10 @@ public class FlickerLight : MonoBehaviour
     private bool isBurning = true;
 
     public bool IsBurnedOut => !isBurning;
+    // On its last stage: the next step puts it out (CandleSoundscape plays a faster crackle meanwhile)
+    public bool IsDying => isBurning && burningOut && sprites != null && sprites.Length > 1 && stage >= sprites.Length - 2;
+
+    private int stage; // index of the sprite being shown
     public event System.Action BurnedOut;
 
     void Start()
@@ -56,6 +60,7 @@ public class FlickerLight : MonoBehaviour
             
             if (frameAnimator != null) frameAnimator.SetStage(i);
             else spriteRenderer.sprite = sprites[i];
+            stage = i;
 
             maxIntensity -= decreaseFactor;
             minIntensity -= decreaseFactor;

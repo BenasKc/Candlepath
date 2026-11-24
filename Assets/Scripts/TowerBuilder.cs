@@ -66,6 +66,9 @@ public class TowerBuilder : MonoBehaviour
         // Dark, but readable: moonlight on the floor, path and props
         if (FindFirstObjectByType<NightLighting>() == null) gameObject.AddComponent<NightLighting>();
 
+        // Map ambience, candle burning and the lantern's burn on Shadows
+        if (FindFirstObjectByType<CandleSoundscape>() == null) gameObject.AddComponent<CandleSoundscape>();
+
         // Keep the whole map visible in any window shape
         Camera cam = Camera.main;
         if (cam != null && cam.orthographic && cam.GetComponent<CameraFit>() == null) cam.gameObject.AddComponent<CameraFit>();
@@ -338,6 +341,7 @@ public class TowerBuilder : MonoBehaviour
         placed[cell] = candle;
         candle.BurnedOut += OnCandleBurnedOut;
         CandleFx.Build(go, fxDelay);
+        Sfx.CandleLit(go.transform.position, fxDelay);
     }
 
     // Frees the cell right away; the old candle shrinks out and destroys itself

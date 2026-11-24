@@ -32,6 +32,7 @@ public class CandleSpark : MonoBehaviour
 
         SparkProjectile spark = Instantiate(sparkPrefab, firePoint.position, Quaternion.identity);
         spark.Launch(target, damagePerHit);
+        Sfx.SparkFired(firePoint.position);
         cooldown = fireInterval;
     }
 

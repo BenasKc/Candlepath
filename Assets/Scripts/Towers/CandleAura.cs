@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -12,7 +13,13 @@ public class CandleAura : MonoBehaviour
     public bool IsAttacking { get; private set; }
     public float Radius => radius;
 
+    // Every aura in the scene (CandleSoundscape plays the burning sound while any of them is attacking)
+    public static readonly List<CandleAura> All = new List<CandleAura>();
+
     private Color idleColor;
+
+    void OnEnable() => All.Add(this);
+    void OnDisable() => All.Remove(this);
 
     void Awake()
     {

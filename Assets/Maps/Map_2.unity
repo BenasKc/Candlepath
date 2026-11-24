@@ -3026,7 +3026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2c307dd22dad5688be73ed44eba8d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MapMusic
-  volume: 0.4
+  volume: 0.2
 --- !u!82 &1098409466
 AudioSource:
   m_ObjectHideFlags: 0
