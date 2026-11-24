@@ -16,6 +16,7 @@ MonoBehaviour:
   <SceneName>k__BackingField: Map_1
   <Preview>k__BackingField: {fileID: 21300000, guid: d64338a12bd0f524ea31932efb80a52c, type: 3}
   <Music>k__BackingField: {fileID: 8300000, guid: 92db0552909232badbb8b07ea908a177, type: 3}
+  <Ambience>k__BackingField: {fileID: 8300000, guid: f4f86c3efe834d8185640283de144e5b, type: 3}
   difficulties:
   - <Difficulty>k__BackingField: 0
     <WaveSet>k__BackingField: {fileID: 11400000, guid: a16dae04f866245f6a87809cdd2d974d, type: 2}

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e29038915d41e887556a49e816459d, type: 3}
+  m_Name: SfxLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::SfxLibrary
+  candleLit:
+    clips:
+    - {fileID: 8300000, guid: e8b536359bfe4c69958ddb54d2351091, type: 3}
+    - {fileID: 8300000, guid: e8b6405299594cf8818caafca44107dc, type: 3}
+    - {fileID: 8300000, guid: 8cef402684c44827b4746388945a9612, type: 3}
+    - {fileID: 8300000, guid: 1bfd339f7df245df8caaa8ba50643b87, type: 3}
+    volume: 0.7
+    pitchJitter: 0.05
+    minInterval: 0.05
+  candleOut:
+    clips:
+    - {fileID: 8300000, guid: e648dd56f2c642b0844f8bbba7168669, type: 3}
+    - {fileID: 8300000, guid: 5a8cab6841974b50ad30a08185c8a2c2, type: 3}
+    volume: 0.8
+    pitchJitter: 0.06
+    minInterval: 0.1
+  sparkFired:
+    clips:
+    - {fileID: 8300000, guid: 569999e0ca354135b640affc98cc0a55, type: 3}
+    - {fileID: 8300000, guid: 890e7a42eda149689c27bba36b3a5fe8, type: 3}
+    - {fileID: 8300000, guid: 68a5747a4f1a4cfbb8b7957350159d59, type: 3}
+    - {fileID: 8300000, guid: 55d8a786c6944e5ba34fecb2cf987990, type: 3}
+    - {fileID: 8300000, guid: eacb0edb7efe4f3fb2d8a4f25254bdfe, type: 3}
+    - {fileID: 8300000, guid: 700012da23184148b4b636f58254c7bb, type: 3}
+    volume: 0.35
+    pitchJitter: 0.12
+    minInterval: 0.07
+  burning: {fileID: 8300000, guid: 24b888db74574c609162db9751f82aec, type: 3}
+  burningStrong: {fileID: 8300000, guid: d518424b43af4d209b3e58e4bf3da535, type: 3}
+  burningVolume: 0.35
+  burningRapid: {fileID: 8300000, guid: 361a91b518e7490fb392ed12d27b8768, type: 3}
+  burningRapidVolume: 0.4
+  enemyBurning: {fileID: 8300000, guid: 0bbf4102fd2f402cb4883b80cb06ac78, type: 3}
+  enemyBurningVolume: 0.6
+  ambienceVolume: 0.5

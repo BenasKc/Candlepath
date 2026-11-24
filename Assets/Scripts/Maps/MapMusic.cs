@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MapMusic : MonoBehaviour
 {
-    [SerializeField, Range(0f, 1f)] private float volume = 0.4f;
+    [SerializeField, Range(0f, 1f)] private float volume = 0.2f;
 
     private AudioSource music;
 
