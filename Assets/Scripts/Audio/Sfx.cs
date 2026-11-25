@@ -16,6 +16,9 @@ public static class Sfx
     public static void CandleLit(Vector3 at, float delay = 0f) => Play(SfxLibrary.Instance, l => l.candleLit, at, delay);
     public static void CandleOut(Vector3 at) => Play(SfxLibrary.Instance, l => l.candleOut, at, 0f);
     public static void SparkFired(Vector3 at) => Play(SfxLibrary.Instance, l => l.sparkFired, at, 0f);
+    public static void EnemyKilled(Vector3 at, bool flying = false) =>
+        Play(SfxLibrary.Instance, l => flying ? l.flyerKilled : l.enemyKilled, at, 0f);
+    public static void LampHit(Vector3 at) => Play(SfxLibrary.Instance, l => l.lampHit, at, 0f);
 
     static void Play(SfxLibrary lib, System.Func<SfxLibrary, SfxLibrary.Sound> pick, Vector3 at, float delay)
     {

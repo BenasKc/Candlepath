@@ -110,9 +110,9 @@ MonoBehaviour:
   candleLight: {fileID: 0}
   sparkPrefab: {fileID: 3194668702442172593, guid: b5e52ccc070f9cd4383abc0da4113ca1, type: 3}
   firePoint: {fileID: 0}
-  range: 2.6
-  damagePerHit: 4
-  fireInterval: 1.2
+  range: 3.4
+  damagePerHit: 10
+  fireInterval: 1.4
 --- !u!114 &3384666343278802037
 MonoBehaviour:
   m_ObjectHideFlags: 0

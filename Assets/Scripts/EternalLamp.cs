@@ -76,6 +76,7 @@ public class EternalLamp : MonoBehaviour
     void OnEnemyReachedLamp(Enemy enemy)
     {
         if (IsGameOver) return;
+        Sfx.LampHit(enemy.transform.position);
         int lost = Mathf.Min(Flame, enemy.LampDamage);
         Flame -= lost;
         flashTimer = hitFlashTime;

@@ -29,6 +29,12 @@ public class SfxLibrary : ScriptableObject
     public Sound candleOut = new Sound();
     [Tooltip("A spark candle fires.")]
     public Sound sparkFired = new Sound();
+    [Tooltip("An enemy is burned up by candlelight.")]
+    public Sound enemyKilled = new Sound();
+    [Tooltip("A flying enemy (Enemy.Flying, e.g. moth, wind spirit) is burned up; used instead of 'enemyKilled'.")]
+    public Sound flyerKilled = new Sound();
+    [Tooltip("An enemy reaches the Eternal Lamp and takes some of its flame.")]
+    public Sound lampHit = new Sound();
 
     [Header("Loops")]
     [Tooltip("Soft burning while a few candles are lit (Ambient).")]
