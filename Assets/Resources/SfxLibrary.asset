@@ -39,6 +39,23 @@ MonoBehaviour:
     volume: 0.35
     pitchJitter: 0.12
     minInterval: 0.07
+  enemyKilled:
+    clips:
+    - {fileID: 8300000, guid: b4700fa9f81d423b940bb7613af8b91c, type: 3}
+    volume: 0.25
+    pitchJitter: 0.1
+    minInterval: 0.06
+  flyerKilled:
+    clips:
+    - {fileID: 8300000, guid: ac517a1525e1486aae2b654ce829577a, type: 3}
+    volume: 0.35
+    pitchJitter: 0.1
+    minInterval: 0.06
+  lampHit:
+    clips: []
+    volume: 0.8
+    pitchJitter: 0.08
+    minInterval: 0.15
   burning: {fileID: 8300000, guid: 24b888db74574c609162db9751f82aec, type: 3}
   burningStrong: {fileID: 8300000, guid: d518424b43af4d209b3e58e4bf3da535, type: 3}
   burningVolume: 0.35

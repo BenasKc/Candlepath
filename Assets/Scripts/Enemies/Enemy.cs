@@ -6,7 +6,9 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private int lampDamage = 1;
     [SerializeField] private int waxReward = 5;
-    
+    [Tooltip("Flying enemy: dies with the whoosh (SfxLibrary.flyerKilled) instead of the burn-up sound.")]
+    [SerializeField] private bool flying = false;
+
     public int LampDamage => lampDamage;
     public int WaxReward => waxReward;
     public PathFollower Movement { get; private set; }
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour
     public void Kill()
     {
         if (removed) return;
+        Sfx.EnemyKilled(transform.position, flying);
         Killed?.Invoke(this);
         Remove();
     }

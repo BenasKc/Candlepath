@@ -28,7 +28,9 @@ public static class CreditsPanel
         "<size=70%><color=#9A8A70>bbc.co.uk – © copyright BBC, sound-effects.bbcrewind.co.uk</color></size>\n" +
         "Further sounds by unfa, ReeseEarl6910, jptalty, staylor8, pcgeek86, SlowMoManVL, peppermintlark, " +
         "fryzu82, devilqube, deadrobotmusic, roisin.gleeson, shelbyshark, JacobEmanuelMadrid\n" +
-        "<size=70%><color=#9A8A70>CC0, from freesound.org</color></size>";
+        "<size=70%><color=#9A8A70>CC0, from freesound.org</color></size>\n" +
+        "<i>RPG Audio</i> by Kenney\n" +
+        "<size=70%><color=#9A8A70>CC0, kenney.nl/assets/rpg-audio</color></size>";
 
     const string Music =
         "<i>Dark Cavern Ambient</i> by Paul Wortmann (Rusys)\n" +

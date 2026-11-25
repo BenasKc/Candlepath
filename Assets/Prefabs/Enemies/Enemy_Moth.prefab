@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   lampDamage: 1
   waxReward: 5
+  flying: 1
 --- !u!114 &6820307046937863973
 MonoBehaviour:
   m_ObjectHideFlags: 0
